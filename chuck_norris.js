@@ -9,8 +9,8 @@ function typeForJokes() {
   });
 
   // First call when page load
-  let query = document.getElementById("textbox").value;
-  getAllEvents(query);
+  //let query = document.getElementById("textbox").value;
+  //getAllEvents(query);
 
 }
 
