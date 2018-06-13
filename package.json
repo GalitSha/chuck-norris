@@ -1,0 +1,15 @@
+{
+  "name": "chuck_norris",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chuck_norris.js",
+  "dependencies": {
+    "animate.css": "^3.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
