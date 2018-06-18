@@ -39,7 +39,7 @@ body {
 
 .grids-container {
     display: grid;
-    grid-template-columns: 25% 37% 31%;
+    grid-template-columns: 31% 31% 31%;
     justify-content: space-between;
     padding: 0 40px;
     height: 700px;
@@ -52,13 +52,50 @@ body {
 }
 
 .jokeclass {
-
+    word-wrap: break-word;
     background: var(--color-one);
     padding: 20px;
+    padding-bottom: 30px;
     border-top: var(--color-two) solid 8px;
     color: black;
     border-radius: 0 26px;
     font-size: 20px;
     font-weight: bold;
-    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.34), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.34), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
 }
+
+
+.selectButton {
+    height: 20px;
+    width: 20px;
+    opacity: 0.5;
+    right: 7px;
+    bottom: 7px;
+    position: absolute;
+    
+}
+
+.selectButton:hover {
+    opacity: 1;
+    height: 22px;
+    width: 22px;
+}
+
+.styleSelectButton {
+    opacity: 1;
+    height: 24px;
+    width: 24px;
+}
+
+#favorites {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor:pointer;
+    /*border:none;*/
+    width:40px;
+    height:40px;
+}
+
+

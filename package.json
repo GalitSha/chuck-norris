@@ -4,11 +4,16 @@
   "description": "",
   "main": "chuck_norris.js",
   "dependencies": {
-    "animate.css": "^3.6.1"
+    "animate.css": "^3.6.1",
+    "uglify-js": "^3.4.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build_babel": "babel chuck_norris.js -d dist_babel",
+    "build": "npm run build_babel && uglifyjs dist_babel/chuck_norris.js --output dist_uglifyjs/chuck_norris_min.js"
   },
   "author": "",
   "license": "ISC"

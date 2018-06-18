@@ -15,7 +15,6 @@ function typeForJokes() {
 }
 
 
-
 function getAllEvents(query) {
   let xhr = new XMLHttpRequest();
   let getUrl = "https://api.chucknorris.io/jokes/search?query=" + query;
@@ -27,10 +26,10 @@ function getAllEvents(query) {
       let jokesArr = (JSON.parse(xhr.responseText)).result;
 
       //if (document.querySelector('.jokeclass')) {
-        for (let i = 0; i < 3; i++) {
-          let parent = document.getElementsByClassName("grid")[i];
-          parent.innerHTML = '';
-        }
+      for (let i = 0; i < 3; i++) {
+        let parent = document.getElementsByClassName("grid")[i];
+        parent.innerHTML = '';
+      }
       //}
 
       showAllJokes(jokesArr);
@@ -48,6 +47,7 @@ function showAllJokes(jokesArr) {
 
 
 function newJokeDiv(joke, i) {
+
   let para = document.createElement("p");
   let node = document.createTextNode(joke);
   para.appendChild(node);
@@ -55,9 +55,55 @@ function newJokeDiv(joke, i) {
   para.classList.add("animated");
   para.classList.add("bounce");
 
+  let selectButton = document.createElement("img");
+  selectButton.src = "http://www.emoji.co.uk/files/google-emojis/symbols-android/7964-yellow-heart.png";
+  para.appendChild(selectButton);
+  selectButton.classList.add("selectButton");
+
 
   let element = document.getElementsByClassName("grid")[i % 3];
   element.appendChild(para);
+
+  clickOnSelectButton(selectButton, para);
+
 }
 
-document.addEventListener('DOMContentLoaded', typeForJokes);
+
+function clickOnSelectButton(selectButton, para) {
+  selectButton.addEventListener('click', () => {
+    selectButton.classList.toggle("styleSelectButton");
+    console.log(para.innerText);
+
+    saveJoke(para.innerText, para)
+
+  });
+}
+
+function saveJoke(joke, para) {
+  let selectedJokesArr = JSON.parse(localStorage.getItem('jokes'));
+  let doubleJoke = 0;
+
+  if (Array.isArray(selectedJokesArr)) {
+
+    selectedJokesArr.forEach(function(joke) {
+      if (joke === para.innerText) {
+        doubleJoke += 1;
+      }
+    });
+    if (doubleJoke === 0) {
+      selectedJokesArr.push(joke);
+      localStorage.setItem('jokes', JSON.stringify(selectedJokesArr));
+    }
+  } else {
+    localStorage.setItem('jokes', '[]');
+    selectedJokesArr.push(joke);
+    localStorage.setItem('jokes', JSON.stringify(selectedJokesArr));
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  typeForJokes();
+  document.getElementById("favorites").addEventListener('click', () =>
+    console.log(localStorage.getItem('jokes')));
+});
