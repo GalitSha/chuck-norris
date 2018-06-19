@@ -7,11 +7,6 @@ function typeForJokes() {
     timeoutID = setTimeout(getAllEvents, 200, query);
 
   });
-
-  // First call when page load
-  //let query = document.getElementById("textbox").value;
-  //getAllEvents(query);
-
 }
 
 
@@ -58,7 +53,7 @@ function newJokeDiv(joke, i) {
   let selectButton = document.createElement("img");
   selectButton.src = "http://www.emoji.co.uk/files/google-emojis/symbols-android/7964-yellow-heart.png";
   para.appendChild(selectButton);
-  selectButton.classList.add("selectButton");
+  selectButton.classList.add("select-button");
 
 
   let element = document.getElementsByClassName("grid")[i % 3];
@@ -85,7 +80,7 @@ function saveJoke(joke, para) {
 
   if (Array.isArray(selectedJokesArr)) {
 
-    selectedJokesArr.forEach(function(joke) {
+    selectedJokesArr.forEach(function (joke) {
       if (joke === para.innerText) {
         doubleJoke += 1;
       }
@@ -101,9 +96,36 @@ function saveJoke(joke, para) {
   }
 }
 
+function addJokeToFavoritesNav(i) {
+  let jokeInTheList = document.createElement("li");
+  let jokeText = document.createTextNode(JSON.parse(localStorage.getItem('jokes'))[i]);
+  jokeInTheList.appendChild(jokeText);
+
+  let hrElement = document.createElement("hr");
+
+  let favoritesNav = document.getElementsByClassName("favoritesNav")[0];
+  favoritesNav.appendChild(jokeInTheList);
+  favoritesNav.appendChild(hrElement);
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
   typeForJokes();
-  document.getElementById("favorites").addEventListener('click', () =>
-    console.log(localStorage.getItem('jokes')));
+
+  document.getElementById("favorites").addEventListener('click', () => {
+    document.querySelector(".favoritesNav").innerHTML="";
+    document.querySelector(".favoritesNav").style.display='visible';
+    let LengthOfFavorites = JSON.parse(localStorage.getItem('jokes')).length;
+    for (let i=0; i<LengthOfFavorites; i++) {
+      addJokeToFavoritesNav(i)
+    }
+
+
+    document.querySelector(".favoritesNav").classList.toggle("hidden-favorites");
+
+    console.log(localStorage.getItem('jokes'));
+
+
+
+  });
 });

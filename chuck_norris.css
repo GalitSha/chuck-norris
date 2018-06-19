@@ -66,20 +66,20 @@ body {
 }
 
 
-.selectButton {
+.select-button {
     height: 20px;
     width: 20px;
     opacity: 0.5;
     right: 7px;
     bottom: 7px;
     position: absolute;
-    
+
 }
 
-.selectButton:hover {
+.select-button:hover {
     opacity: 1;
-    height: 22px;
-    width: 22px;
+    height: 21px;
+    width: 21px;
 }
 
 .styleSelectButton {
@@ -98,4 +98,11 @@ body {
     height:40px;
 }
 
+.favoritesNav {
+    /*display: none;*/
 
+}
+
+.hidden-favorites {
+    display:none;
+}
