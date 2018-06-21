@@ -9,6 +9,9 @@ body {
     background: var(--main-bg-color);
     font-family: 'Slabo 27px', serif;
     padding: 0 100px;
+    position: relative;
+    z-index: 1;
+    margin: 0;
 }
 
 #title {
@@ -65,7 +68,6 @@ body {
     position: relative;
 }
 
-
 .select-button {
     height: 20px;
     width: 20px;
@@ -92,17 +94,83 @@ body {
     position: absolute;
     top: 25px;
     left: 25px;
-    cursor:pointer;
-    /*border:none;*/
-    width:40px;
-    height:40px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.favorites-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .favoritesNav {
-    /*display: none;*/
+    z-index: 5;
+    background: var(--color-one);
+    padding: 10px;
+    width: 50%;
+    border-radius: 4px;
+}
+
+.modal-background {
+    grid-area: modal-background;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
 
 }
 
 .hidden-favorites {
-    display:none;
+    display: none;
+}
+
+.favoritesNav li {
+    list-style-type: none;
+    color: black;
+}
+
+
+/*MEDIA QUERIES*/
+
+/*tablets*/
+@media screen and (max-width: 700px) {
+
+}
+
+/*mobiles*/
+@media screen and (max-width: 480px) {
+
+    body {
+        padding: 0 50px;
+    }
+    #favorites {
+        position: absolute;
+        top: 19px;
+        left: 18px;
+        width: 27px;
+        height: 29px;
+    }
+
+    #title {
+        font-size: 34px;
+    }
+
+    .grids-container {
+        display: grid;
+        grid-template-columns: 100%;
+        padding:0;
+    }
+
+    .jokeclass {
+        font-size: 18px;
+        padding: 20px;
+    }
+
 }

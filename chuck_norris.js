@@ -114,18 +114,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.getElementById("favorites").addEventListener('click', () => {
     document.querySelector(".favoritesNav").innerHTML="";
-    document.querySelector(".favoritesNav").style.display='visible';
+
     let LengthOfFavorites = JSON.parse(localStorage.getItem('jokes')).length;
     for (let i=0; i<LengthOfFavorites; i++) {
       addJokeToFavoritesNav(i)
     }
-
-
-    document.querySelector(".favoritesNav").classList.toggle("hidden-favorites");
+    document.querySelector(".favorites-container").classList.remove("hidden-favorites");
 
     console.log(localStorage.getItem('jokes'));
+  });
 
+  document.querySelector(".modal-background").addEventListener('click', () => {
+    document.querySelector(".favorites-container").classList.add("hidden-favorites");
+  });
 
 
   });
-});

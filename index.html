@@ -8,13 +8,15 @@
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <meta name="viewport" content="width=device-width">
 </head>
 <body>
 
 <img  id="favorites" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"/>
-
-<ul class="favoritesNav hidden-favorites"></ul>
-
+<div class="favorites-container hidden-favorites">
+   <ul class="favoritesNav"></ul>
+    <div class="modal-background"></div>
+</div>
 <div id="title">Chuck Norris' Jokes By keyword</div>
 <div class="search-container">
     <input type="text" id="textbox" autofocus placeholder="Type your keyword..." />
